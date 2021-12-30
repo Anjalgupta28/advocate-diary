@@ -1,0 +1,8 @@
+{
+    "git.fetchOnPull": true,
+    "githubPullRequests.remotes": [
+        "origin",
+        "upstream",
+        "dashboardUI"
+    ]
+}
