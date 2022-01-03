@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { CASE_DATA } from './CasesData';
 import './Dashboard.css';
+import { CustomModal } from './CustomModal';
 import { TableBody } from './TableBody';
 import { TableHeader } from './TableHeader';
 
@@ -8,8 +9,20 @@ export function Dashboard(){
 
     const [activeCaseList, changeActiveCaseList] = useState(CASE_DATA.caseAll.caseList) ;
     const caseTypes = Object.keys(CASE_DATA);
+    const [ showModal, setShowModal] = useState(false);
+    const [activeRow, setActiveRow] = useState({ });
     return (
         <div className ="container-xxl">
+             {showModal && <CustomModal 
+                showModal={showModal} 
+                setShowModal={(val)=>setShowModal(val)}
+                        caseNo={activeRow.Case_no}
+                        petitioner={activeRow.petitioner}
+                        respondent={activeRow.respondent}
+                        nameofclient={activeRow.nameofclient}
+                        remarks={activeRow.Remark}
+                        nextDate={activeRow.Next_date}
+                />}
             <div className = "row m-5 flex-nowrap">
                 {
                     caseTypes.map((item, index)=> { 
@@ -31,6 +44,7 @@ export function Dashboard(){
                
             </div>
             <div className ="table-parent m-1">
+           
                 <TableHeader/>
                 {activeCaseList.map((item, index)=>{
                     return (
@@ -42,6 +56,13 @@ export function Dashboard(){
                         nameofclient={item.nameofclient}
                         remarks={item.Remark}
                         nextDate={item.Next_date}
+                        setShowModal={(val)=> {
+
+                            setShowModal(val);
+                            setActiveRow(item); 
+                        }
+                        }
+                       
                         fileno={""}
                         />
                     )

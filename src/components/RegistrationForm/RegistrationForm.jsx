@@ -1,5 +1,4 @@
-import React, { Component} from 'react';
-import 'react-datepicker/dist/react-datepicker.css'
+import React, { Component } from 'react';
 
 export class RegistrationForm extends Component{
 
@@ -209,11 +208,13 @@ export class RegistrationForm extends Component{
                                     value={this.state.Documents}/>
                                     
                                 </div>
-                                <div className="form-group">
+                                {/* <div className="form-group">
                                     <label>Next Date:</label>
-                                    <input placeholder="Next Date" name="Next Date" className="form-control"
-                                    value={this.state.NextDate} onChange={this.changeNextDateHandler}/>
-                                </div>
+                                    <input placeholder="Next Date" name="Next Date" 
+                                    className="form-control"
+                                    value={this.state.NextDate}
+                                    onChange={this.changeNextDateHandler}/>
+                                </div> */}
                                 <br></br>
                                 <br></br>
                                 <button className="btn btn-success" 
